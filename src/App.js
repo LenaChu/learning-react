@@ -1,23 +1,38 @@
-import React from 'react';
-import CounterExample from './Components/CounterExample';
-import HelloWorld from './Components/HelloWorld'
-import Header from './Components/Header'
-import Footer from './Components/Footer'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import Home from "./Views/Home";
+import About from "./Views/About";
+import ContactUs from './Views/ContactUs'
+import Product from "./Views/Product";
+
 
 function App() {
   return (
     <div>
-      <Header />
-      <HelloWorld name ="Black Jack" />
-      <Footer />
+      <Router>
+        <Header />
+        <div className="p-3">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/about">
+              <About />
+            </Route>
+            <Route exact path="/products/:id">
+              <Product />
+            </Route>
+            <Route exact path="/contact-us">
+              <ContactUs />
+            </Route>
+          </Switch>
+        </div>
+        <Footer />
+      </Router>
     </div>
   );
 }
 
-export default App;  
+export default App;
